@@ -1,3 +1,5 @@
+import { parentPort } from "worker_threads";
+
 function App(props) {
   return (
     <div>
@@ -6,7 +8,7 @@ function App(props) {
           className="navbar navbar-inverse navbar-fixed-top"
           role="navigation"
         >
-          <TopNav />
+          <TopNav messages={props.messages} />
 
           <SideNav />
         </nav>
@@ -27,9 +29,9 @@ function App(props) {
             </div>
             <div className="row">
               <Comments newComments={props.newComments} />
-              <Tasks />
-              <Orders />
-              <Tickets />
+              <Tasks tasks={props.newTasks} />
+              <Orders newOrders={props.newOrders} />
+              <Tickets tickets={props.tickets} />
             </div>
 
             <AreaChart />
@@ -38,10 +40,10 @@ function App(props) {
               <DonutChart />
 
               <div className="col-lg-4">
-                <TasksPanel />
+                <TasksPanel tasks={props.tasks} />
               </div>
               <div className="col-lg-4">
-                <TransactionsPanel />
+                <TransactionsPanel orders={props.orders} />
               </div>
             </div>
           </div>

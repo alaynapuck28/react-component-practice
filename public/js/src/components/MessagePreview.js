@@ -1,4 +1,6 @@
-function MessagePreview() {
+import { prependOnceListener } from "cluster";
+
+function MessagePreview(props) {
   return (
     <li className="message-preview">
       <a href="#">
@@ -12,10 +14,11 @@ function MessagePreview() {
           </span>
           <div className="media-body">
             <h5 className="media-heading">
-              <strong>John Smith</strong>
+              <strong>{props.messageName}</strong>
             </h5>
-            <DateTime />
-            <p>Lorem ipsum dolor sit amet, consectetur...</p>
+            {props.messageDate}
+
+            <p>{props.messageMessage}</p>
           </div>
         </div>
       </a>
